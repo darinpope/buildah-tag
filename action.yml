@@ -19,4 +19,4 @@ runs:
       uses: docker://quay.io/buildah/stable:v1.32.2
       shell: sh
       run: |
-        buildah tag ${{ input.original-tag }} ${{ input.new-tag }}
+        buildah tag ${{ inputs.original-tag }} ${{ inputs.new-tag }}
