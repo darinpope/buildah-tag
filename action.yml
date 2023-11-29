@@ -1,0 +1,22 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: 'buildah-tag'
+description: 'buildah-tag'
+
+inputs:
+  original-tag:
+    description: 'original tag'
+    required: true
+  new-tag:
+    description: 'new tag'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - id: buildah-tag
+      name: Use Buildah to tag image
+      uses: docker://quay.io/buildah/stable:v1.32.2
+      shell: sh
+      run: |
+        buildah tag ${{ input.original-tag }} ${{ input.new-tag }}
